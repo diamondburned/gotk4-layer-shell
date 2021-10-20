@@ -6,6 +6,7 @@ import (
 
 	"github.com/diamondburned/gotk4-layer-shell/pkg/gtklayershell"
 	"github.com/diamondburned/gotk4/pkg/gtk/v3"
+	"github.com/diamondburned/gotk4/pkg/pango"
 )
 
 func main() {
@@ -17,16 +18,28 @@ func main() {
 	}
 }
 
+var attrs = []*pango.Attribute{
+	pango.NewAttrScale(10),
+	pango.NewAttrWeight(pango.WeightBold),
+}
+
 func activate(app *gtk.Application) {
 	if !gtklayershell.IsSupported() {
 		log.Fatalln("gtk-layer-shell not supported")
 	}
 
+	labelAttrs := pango.NewAttrList()
+	for _, attr := range attrs {
+		labelAttrs.Insert(attr)
+	}
+
+	label := gtk.NewLabel("This window floats in the middle.")
+	label.SetAttributes(labelAttrs)
+	label.Show()
+
 	appwin := gtk.NewApplicationWindow(app)
-	appwin.Add(gtk.NewLabel("This window floats in the middle."))
+	appwin.Add(label)
 	appwin.SetTitle("Layer Shell Example")
-	appwin.SetDefaultSize(600, 300)
-	appwin.Show()
 
 	window := &appwin.Window
 
@@ -34,6 +47,8 @@ func activate(app *gtk.Application) {
 	gtklayershell.SetLayer(window, gtklayershell.LayerShellLayerTop)
 
 	for edge := gtklayershell.Edge(0); edge < gtklayershell.LayerShellEdgeEntryNumber; edge++ {
-		gtklayershell.SetAnchor(window, edge, true)
+		gtklayershell.SetAnchor(window, edge, false)
 	}
+
+	appwin.Show()
 }

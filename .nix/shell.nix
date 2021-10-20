@@ -4,11 +4,18 @@ in {
 	gotk4 ? (systemPkgs.fetchFromGitHub {
 		owner = "diamondburned";
 		repo  = "gotk4";
-		rev   = "318362ceedaf5281a5afbb8c65888e958c328ef9";
-		hash  = "sha256:1f4sds78mnim36ymqsbqw07r6fi035ssj346krdnfqj75an4d5hz";
+		rev   = "4f507c20f8b07f4a87f0152fbefdc9a380042b83";
+		hash  = "sha256:0zijivbyjfbb2vda05vpvq268i7vx9bhzlbzzsa4zfzzr9427w66";
 	}),
 
-	pkgs ? (import "${gotk4}/.nix/pkgs.nix" {}),
+	pkgs ? (import "${gotk4}/.nix/pkgs.nix" {
+		src = systemPkgs.fetchFromGitHub {
+			owner = "NixOS";
+			repo  = "nixpkgs";
+			rev   = "3fdd780";
+			hash  = "sha256:0df9v2snlk9ag7jnmxiv31pzhd0rqx2h3kzpsxpj07xns8k8dghz";
+		};
+	}),
 }:
 
 let shell = import "${gotk4}/.nix/shell.nix" {
