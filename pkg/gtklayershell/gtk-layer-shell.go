@@ -126,6 +126,11 @@ func (l Layer) String() string {
 // NOTE: you can control the auto exclusive zone by changing the margin on the
 // non-anchored edge. This behavior is specific to gtk-layer-shell and not part
 // of the underlying protocol.
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//
 func AutoExclusiveZoneEnable(window *gtk.Window) {
 	var _arg1 *C.GtkWindow // out
 
@@ -135,6 +140,11 @@ func AutoExclusiveZoneEnable(window *gtk.Window) {
 	runtime.KeepAlive(window)
 }
 
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//
 func AutoExclusiveZoneIsEnabled(window *gtk.Window) bool {
 	var _arg1 *C.GtkWindow // out
 	var _cret C.gboolean   // in
@@ -153,6 +163,12 @@ func AutoExclusiveZoneIsEnabled(window *gtk.Window) bool {
 	return _ok
 }
 
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+
+//
 func GetAnchor(window *gtk.Window, edge Edge) bool {
 	var _arg1 *C.GtkWindow        // out
 	var _arg2 C.GtkLayerShellEdge // out
@@ -174,6 +190,11 @@ func GetAnchor(window *gtk.Window, edge Edge) bool {
 	return _ok
 }
 
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//
 func GetExclusiveZone(window *gtk.Window) int {
 	var _arg1 *C.GtkWindow // out
 	var _cret C.int        // in
@@ -192,6 +213,11 @@ func GetExclusiveZone(window *gtk.Window) int {
 
 // GetKeyboardInteractivity: deprecated: Use gtk_layer_get_keyboard_mode ()
 // instead.
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//
 func GetKeyboardInteractivity(window *gtk.Window) bool {
 	var _arg1 *C.GtkWindow // out
 	var _cret C.gboolean   // in
@@ -210,6 +236,11 @@ func GetKeyboardInteractivity(window *gtk.Window) bool {
 	return _ok
 }
 
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//
 func GetKeyboardMode(window *gtk.Window) KeyboardMode {
 	var _arg1 *C.GtkWindow                // out
 	var _cret C.GtkLayerShellKeyboardMode // in
@@ -226,6 +257,11 @@ func GetKeyboardMode(window *gtk.Window) KeyboardMode {
 	return _keyboardMode
 }
 
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//
 func GetLayer(window *gtk.Window) Layer {
 	var _arg1 *C.GtkWindow         // out
 	var _cret C.GtkLayerShellLayer // in
@@ -254,6 +290,12 @@ func GetMajorVersion() uint {
 	return _guint
 }
 
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+
+//
 func GetMargin(window *gtk.Window, edge Edge) int {
 	var _arg1 *C.GtkWindow        // out
 	var _arg2 C.GtkLayerShellEdge // out
@@ -300,6 +342,11 @@ func GetMinorVersion() uint {
 // GetNamespace: NOTE: this function does not return ownership of the string. Do
 // not free the returned string. Future calls into the library may invalidate
 // the returned string.
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//
 func GetNamespace(window *gtk.Window) string {
 	var _arg1 *C.GtkWindow // out
 	var _cret *C.char      // in
@@ -332,6 +379,11 @@ func GetProtocolVersion() uint {
 
 // InitForWindow: set the window up to be a layer surface once it is mapped.
 // this must be called before the window is realized.
+//
+// The function takes the following parameters:
+//
+//    - window to be turned into a layer surface.
+//
 func InitForWindow(window *gtk.Window) {
 	var _arg1 *C.GtkWindow // out
 
@@ -341,6 +393,11 @@ func InitForWindow(window *gtk.Window) {
 	runtime.KeepAlive(window)
 }
 
+//
+// The function takes the following parameters:
+//
+//    - window that may or may not have a layer surface.
+//
 func IsLayerWindow(window *gtk.Window) bool {
 	var _arg1 *C.GtkWindow // out
 	var _cret C.gboolean   // in
@@ -383,6 +440,13 @@ func IsSupported() bool {
 // screen in that direction
 //
 // Default is FALSE for each LayerShellEdge.
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//    - edge this layer suface may be anchored to.
+//    - anchorToEdge: whether or not to anchor this layer surface to edge.
+//
 func SetAnchor(window *gtk.Window, edge Edge, anchorToEdge bool) {
 	var _arg1 *C.GtkWindow        // out
 	var _arg2 C.GtkLayerShellEdge // out
@@ -407,6 +471,12 @@ func SetAnchor(window *gtk.Window, edge Edge, anchorToEdge bool) {
 // details.
 //
 // Default is 0.
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//    - exclusiveZone: size of the exclusive zone.
+//
 func SetExclusiveZone(window *gtk.Window, exclusiveZone int) {
 	var _arg1 *C.GtkWindow // out
 	var _arg2 C.int        // out
@@ -426,6 +496,12 @@ func SetExclusiveZone(window *gtk.Window, exclusiveZone int) {
 // Default is FALSE
 //
 // Deprecated: Use gtk_layer_set_keyboard_mode () instead.
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+
+//
 func SetKeyboardInteractivity(window *gtk.Window, interactivity bool) {
 	var _arg1 *C.GtkWindow // out
 	var _arg2 C.gboolean   // out
@@ -444,6 +520,12 @@ func SetKeyboardInteractivity(window *gtk.Window, interactivity bool) {
 // compositor, see GtkLayerShellKeyboardMode for details.
 //
 // Default is K_LAYER_SHELL_KEYBOARD_MODE_NONE.
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//    - mode: type of keyboard interactivity requested.
+//
 func SetKeyboardMode(window *gtk.Window, mode KeyboardMode) {
 	var _arg1 *C.GtkWindow                // out
 	var _arg2 C.GtkLayerShellKeyboardMode // out
@@ -463,6 +545,12 @@ func SetKeyboardMode(window *gtk.Window, mode KeyboardMode) {
 // effect.
 //
 // Default is K_LAYER_SHELL_LAYER_TOP.
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//    - layer on which this surface appears.
+//
 func SetLayer(window *gtk.Window, layer Layer) {
 	var _arg1 *C.GtkWindow         // out
 	var _arg2 C.GtkLayerShellLayer // out
@@ -480,6 +568,13 @@ func SetLayer(window *gtk.Window, layer Layer) {
 // exclusive zone enabled).
 //
 // Default is 0 for each LayerShellEdge.
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//    - edge for which to set the margin.
+//    - marginSize: margin for edge to be set.
+//
 func SetMargin(window *gtk.Window, edge Edge, marginSize int) {
 	var _arg1 *C.GtkWindow        // out
 	var _arg2 C.GtkLayerShellEdge // out
@@ -500,6 +595,13 @@ func SetMargin(window *gtk.Window, edge Edge, marginSize int) {
 // the change can take effect.
 //
 // Default is NULL.
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//    - monitor: output this layer surface will be placed on (NULL to let the
+//    compositor decide).
+//
 func SetMonitor(window *gtk.Window, monitor *gdk.Monitor) {
 	var _arg1 *C.GtkWindow  // out
 	var _arg2 *C.GdkMonitor // out
@@ -520,6 +622,12 @@ func SetMonitor(window *gtk.Window, monitor *gdk.Monitor) {
 // get remapped so the change can take effect.
 //
 // Default is "gtk-layer-shell" (which will be used if set to NULL).
+//
+// The function takes the following parameters:
+//
+//    - window: layer surface.
+//    - nameSpace: namespace of this layer surface.
+//
 func SetNamespace(window *gtk.Window, nameSpace string) {
 	var _arg1 *C.GtkWindow // out
 	var _arg2 *C.char      // out
