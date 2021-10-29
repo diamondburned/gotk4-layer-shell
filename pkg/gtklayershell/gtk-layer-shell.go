@@ -13,10 +13,11 @@ import (
 
 // #cgo pkg-config: gtk-layer-shell-0 gtk+-3.0
 // #cgo CFLAGS: -Wno-deprecated-declarations
+// #include <stdlib.h>
 // #include <gtk-layer-shell/gtk-layer-shell.h>
 import "C"
 
-type Edge int
+type Edge C.gint
 
 const (
 	// LayerShellEdgeLeft: left edge of the screen.
@@ -58,7 +59,7 @@ func (e Edge) String() string {
 // protocol version < 4. GTK_LAYER_SHELL_KEYBOARD_MODE_ENTRY_NUMBER: Should not
 // be used except to get the number of entries. (NOTE: may change in future
 // releases as more entries are added).
-type KeyboardMode int
+type KeyboardMode C.gint
 
 const (
 	LayerShellKeyboardModeNone KeyboardMode = iota
@@ -83,7 +84,7 @@ func (k KeyboardMode) String() string {
 	}
 }
 
-type Layer int
+type Layer C.gint
 
 const (
 	// LayerShellLayerBackground: background layer.
