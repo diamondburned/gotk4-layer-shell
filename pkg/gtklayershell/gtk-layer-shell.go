@@ -11,8 +11,6 @@ import (
 	"github.com/diamondburned/gotk4/pkg/gtk/v3"
 )
 
-// #cgo pkg-config: gtk-layer-shell-0 gtk+-3.0
-// #cgo CFLAGS: -Wno-deprecated-declarations
 // #include <stdlib.h>
 // #include <gtk-layer-shell/gtk-layer-shell.h>
 import "C"
@@ -141,10 +139,14 @@ func AutoExclusiveZoneEnable(window *gtk.Window) {
 	runtime.KeepAlive(window)
 }
 
-//
 // The function takes the following parameters:
 //
 //    - window: layer surface.
+//
+// The function returns the following values:
+//
+//    - ok: if the surface's exclusive zone is set to change based on the
+//      window's size.
 //
 func AutoExclusiveZoneIsEnabled(window *gtk.Window) bool {
 	var _arg1 *C.GtkWindow // out
@@ -164,11 +166,14 @@ func AutoExclusiveZoneIsEnabled(window *gtk.Window) bool {
 	return _ok
 }
 
-//
 // The function takes the following parameters:
 //
 //    - window: layer surface.
-
+//    - edge
+//
+// The function returns the following values:
+//
+//    - ok: if this surface is anchored to the given edge.
 //
 func GetAnchor(window *gtk.Window, edge Edge) bool {
 	var _arg1 *C.GtkWindow        // out
@@ -191,10 +196,14 @@ func GetAnchor(window *gtk.Window, edge Edge) bool {
 	return _ok
 }
 
-//
 // The function takes the following parameters:
 //
 //    - window: layer surface.
+//
+// The function returns the following values:
+//
+//    - gint window's exclusive zone (which may have been set manually or
+//      automatically).
 //
 func GetExclusiveZone(window *gtk.Window) int {
 	var _arg1 *C.GtkWindow // out
@@ -219,6 +228,10 @@ func GetExclusiveZone(window *gtk.Window) int {
 //
 //    - window: layer surface.
 //
+// The function returns the following values:
+//
+//    - ok: if keybaord interacitvity is enabled.
+//
 func GetKeyboardInteractivity(window *gtk.Window) bool {
 	var _arg1 *C.GtkWindow // out
 	var _cret C.gboolean   // in
@@ -237,10 +250,13 @@ func GetKeyboardInteractivity(window *gtk.Window) bool {
 	return _ok
 }
 
-//
 // The function takes the following parameters:
 //
 //    - window: layer surface.
+//
+// The function returns the following values:
+//
+//    - keyboardMode: current keyboard interactivity mode for window.
 //
 func GetKeyboardMode(window *gtk.Window) KeyboardMode {
 	var _arg1 *C.GtkWindow                // out
@@ -258,10 +274,13 @@ func GetKeyboardMode(window *gtk.Window) KeyboardMode {
 	return _keyboardMode
 }
 
-//
 // The function takes the following parameters:
 //
 //    - window: layer surface.
+//
+// The function returns the following values:
+//
+//    - layer: current layer.
 //
 func GetLayer(window *gtk.Window) Layer {
 	var _arg1 *C.GtkWindow         // out
@@ -279,6 +298,10 @@ func GetLayer(window *gtk.Window) Layer {
 	return _layer
 }
 
+// The function returns the following values:
+//
+//    - guint: major version number of the GTK Layer Shell library.
+//
 func GetMajorVersion() uint {
 	var _cret C.guint // in
 
@@ -291,11 +314,14 @@ func GetMajorVersion() uint {
 	return _guint
 }
 
-//
 // The function takes the following parameters:
 //
 //    - window: layer surface.
-
+//    - edge
+//
+// The function returns the following values:
+//
+//    - gint: size of the margin for the given edge.
 //
 func GetMargin(window *gtk.Window, edge Edge) int {
 	var _arg1 *C.GtkWindow        // out
@@ -316,6 +342,10 @@ func GetMargin(window *gtk.Window, edge Edge) int {
 	return _gint
 }
 
+// The function returns the following values:
+//
+//    - guint: micro/patch version number of the GTK Layer Shell library.
+//
 func GetMicroVersion() uint {
 	var _cret C.guint // in
 
@@ -328,6 +358,10 @@ func GetMicroVersion() uint {
 	return _guint
 }
 
+// The function returns the following values:
+//
+//    - guint: minor version number of the GTK Layer Shell library.
+//
 func GetMinorVersion() uint {
 	var _cret C.guint // in
 
@@ -348,6 +382,11 @@ func GetMinorVersion() uint {
 //
 //    - window: layer surface.
 //
+// The function returns the following values:
+//
+//    - utf8: reference to the namespace property. If namespace is unset, returns
+//      the default namespace ("gtk-layer-shell"). Never returns NULL.
+//
 func GetNamespace(window *gtk.Window) string {
 	var _arg1 *C.GtkWindow // out
 	var _cret *C.char      // in
@@ -366,6 +405,12 @@ func GetNamespace(window *gtk.Window) string {
 
 // GetProtocolVersion: may block for a Wayland roundtrip the first time it's
 // called.
+//
+// The function returns the following values:
+//
+//    - guint: version of the zwlr_layer_shell_v1 protocol supported by the
+//      compositor or 0 if the protocol is not supported.
+//
 func GetProtocolVersion() uint {
 	var _cret C.guint // in
 
@@ -394,10 +439,13 @@ func InitForWindow(window *gtk.Window) {
 	runtime.KeepAlive(window)
 }
 
-//
 // The function takes the following parameters:
 //
 //    - window that may or may not have a layer surface.
+//
+// The function returns the following values:
+//
+//    - ok: if window has been initialized as a layer surface.
 //
 func IsLayerWindow(window *gtk.Window) bool {
 	var _arg1 *C.GtkWindow // out
@@ -418,6 +466,12 @@ func IsLayerWindow(window *gtk.Window) bool {
 }
 
 // IsSupported: may block for a Wayland roundtrip the first time it's called.
+//
+// The function returns the following values:
+//
+//    - ok: TRUE if the platform is Wayland and Wayland compositor supports the
+//      zwlr_layer_shell_v1 protocol.
+//
 func IsSupported() bool {
 	var _cret C.gboolean // in
 
@@ -501,7 +555,7 @@ func SetExclusiveZone(window *gtk.Window, exclusiveZone int) {
 // The function takes the following parameters:
 //
 //    - window: layer surface.
-
+//    - interactivity
 //
 func SetKeyboardInteractivity(window *gtk.Window, interactivity bool) {
 	var _arg1 *C.GtkWindow // out
@@ -601,7 +655,7 @@ func SetMargin(window *gtk.Window, edge Edge, marginSize int) {
 //
 //    - window: layer surface.
 //    - monitor: output this layer surface will be placed on (NULL to let the
-//    compositor decide).
+//      compositor decide).
 //
 func SetMonitor(window *gtk.Window, monitor *gdk.Monitor) {
 	var _arg1 *C.GtkWindow  // out
