@@ -3,7 +3,7 @@ module github.com/diamondburned/gotk4-layer-shell
 go 1.17
 
 require (
-	github.com/diamondburned/gotk4 v0.0.3-0.20220122222342-2b51f7b628af
+	github.com/diamondburned/gotk4 v0.0.3-0.20220408070453-08962439fbbc
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
 )
 

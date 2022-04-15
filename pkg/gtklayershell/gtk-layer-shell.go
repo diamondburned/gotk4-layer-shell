@@ -7,6 +7,7 @@ import (
 	"runtime"
 	"unsafe"
 
+	externglib "github.com/diamondburned/gotk4/pkg/core/glib"
 	"github.com/diamondburned/gotk4/pkg/gdk/v3"
 	"github.com/diamondburned/gotk4/pkg/gtk/v3"
 )
@@ -133,7 +134,7 @@ func (l Layer) String() string {
 func AutoExclusiveZoneEnable(window *gtk.Window) {
 	var _arg1 *C.GtkWindow // out
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 
 	C.gtk_layer_auto_exclusive_zone_enable(_arg1)
 	runtime.KeepAlive(window)
@@ -152,7 +153,7 @@ func AutoExclusiveZoneIsEnabled(window *gtk.Window) bool {
 	var _arg1 *C.GtkWindow // out
 	var _cret C.gboolean   // in
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 
 	_cret = C.gtk_layer_auto_exclusive_zone_is_enabled(_arg1)
 	runtime.KeepAlive(window)
@@ -180,7 +181,7 @@ func GetAnchor(window *gtk.Window, edge Edge) bool {
 	var _arg2 C.GtkLayerShellEdge // out
 	var _cret C.gboolean          // in
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 	_arg2 = C.GtkLayerShellEdge(edge)
 
 	_cret = C.gtk_layer_get_anchor(_arg1, _arg2)
@@ -209,7 +210,7 @@ func GetExclusiveZone(window *gtk.Window) int {
 	var _arg1 *C.GtkWindow // out
 	var _cret C.int        // in
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 
 	_cret = C.gtk_layer_get_exclusive_zone(_arg1)
 	runtime.KeepAlive(window)
@@ -236,7 +237,7 @@ func GetKeyboardInteractivity(window *gtk.Window) bool {
 	var _arg1 *C.GtkWindow // out
 	var _cret C.gboolean   // in
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 
 	_cret = C.gtk_layer_get_keyboard_interactivity(_arg1)
 	runtime.KeepAlive(window)
@@ -262,7 +263,7 @@ func GetKeyboardMode(window *gtk.Window) KeyboardMode {
 	var _arg1 *C.GtkWindow                // out
 	var _cret C.GtkLayerShellKeyboardMode // in
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 
 	_cret = C.gtk_layer_get_keyboard_mode(_arg1)
 	runtime.KeepAlive(window)
@@ -286,7 +287,7 @@ func GetLayer(window *gtk.Window) Layer {
 	var _arg1 *C.GtkWindow         // out
 	var _cret C.GtkLayerShellLayer // in
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 
 	_cret = C.gtk_layer_get_layer(_arg1)
 	runtime.KeepAlive(window)
@@ -328,7 +329,7 @@ func GetMargin(window *gtk.Window, edge Edge) int {
 	var _arg2 C.GtkLayerShellEdge // out
 	var _cret C.int               // in
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 	_arg2 = C.GtkLayerShellEdge(edge)
 
 	_cret = C.gtk_layer_get_margin(_arg1, _arg2)
@@ -391,7 +392,7 @@ func GetNamespace(window *gtk.Window) string {
 	var _arg1 *C.GtkWindow // out
 	var _cret *C.char      // in
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 
 	_cret = C.gtk_layer_get_namespace(_arg1)
 	runtime.KeepAlive(window)
@@ -433,7 +434,7 @@ func GetProtocolVersion() uint {
 func InitForWindow(window *gtk.Window) {
 	var _arg1 *C.GtkWindow // out
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 
 	C.gtk_layer_init_for_window(_arg1)
 	runtime.KeepAlive(window)
@@ -451,7 +452,7 @@ func IsLayerWindow(window *gtk.Window) bool {
 	var _arg1 *C.GtkWindow // out
 	var _cret C.gboolean   // in
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 
 	_cret = C.gtk_layer_is_layer_window(_arg1)
 	runtime.KeepAlive(window)
@@ -507,7 +508,7 @@ func SetAnchor(window *gtk.Window, edge Edge, anchorToEdge bool) {
 	var _arg2 C.GtkLayerShellEdge // out
 	var _arg3 C.gboolean          // out
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 	_arg2 = C.GtkLayerShellEdge(edge)
 	if anchorToEdge {
 		_arg3 = C.TRUE
@@ -536,7 +537,7 @@ func SetExclusiveZone(window *gtk.Window, exclusiveZone int) {
 	var _arg1 *C.GtkWindow // out
 	var _arg2 C.int        // out
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 	_arg2 = C.int(exclusiveZone)
 
 	C.gtk_layer_set_exclusive_zone(_arg1, _arg2)
@@ -561,7 +562,7 @@ func SetKeyboardInteractivity(window *gtk.Window, interactivity bool) {
 	var _arg1 *C.GtkWindow // out
 	var _arg2 C.gboolean   // out
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 	if interactivity {
 		_arg2 = C.TRUE
 	}
@@ -585,7 +586,7 @@ func SetKeyboardMode(window *gtk.Window, mode KeyboardMode) {
 	var _arg1 *C.GtkWindow                // out
 	var _arg2 C.GtkLayerShellKeyboardMode // out
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 	_arg2 = C.GtkLayerShellKeyboardMode(mode)
 
 	C.gtk_layer_set_keyboard_mode(_arg1, _arg2)
@@ -610,7 +611,7 @@ func SetLayer(window *gtk.Window, layer Layer) {
 	var _arg1 *C.GtkWindow         // out
 	var _arg2 C.GtkLayerShellLayer // out
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 	_arg2 = C.GtkLayerShellLayer(layer)
 
 	C.gtk_layer_set_layer(_arg1, _arg2)
@@ -635,7 +636,7 @@ func SetMargin(window *gtk.Window, edge Edge, marginSize int) {
 	var _arg2 C.GtkLayerShellEdge // out
 	var _arg3 C.int               // out
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 	_arg2 = C.GtkLayerShellEdge(edge)
 	_arg3 = C.int(marginSize)
 
@@ -661,8 +662,8 @@ func SetMonitor(window *gtk.Window, monitor *gdk.Monitor) {
 	var _arg1 *C.GtkWindow  // out
 	var _arg2 *C.GdkMonitor // out
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
-	_arg2 = (*C.GdkMonitor)(unsafe.Pointer(monitor.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
+	_arg2 = (*C.GdkMonitor)(unsafe.Pointer(externglib.InternObject(monitor).Native()))
 
 	C.gtk_layer_set_monitor(_arg1, _arg2)
 	runtime.KeepAlive(window)
@@ -687,7 +688,7 @@ func SetNamespace(window *gtk.Window, nameSpace string) {
 	var _arg1 *C.GtkWindow // out
 	var _arg2 *C.char      // out
 
-	_arg1 = (*C.GtkWindow)(unsafe.Pointer(window.Native()))
+	_arg1 = (*C.GtkWindow)(unsafe.Pointer(externglib.InternObject(window).Native()))
 	_arg2 = (*C.char)(unsafe.Pointer(C.CString(nameSpace)))
 	defer C.free(unsafe.Pointer(_arg2))
 
