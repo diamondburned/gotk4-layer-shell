@@ -1,6 +1,6 @@
 module github.com/diamondburned/gotk4-layer-shell
 
-go 1.17
+go 1.21
 
 require github.com/diamondburned/gotk4 v0.1.0
 
